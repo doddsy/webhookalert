@@ -1,12 +1,15 @@
 import requests
 import json
-from os import getcwd
+from os import path
 from time import sleep
+
+CWD = path.dirname(path.realpath(__file__))
 
 WEBHOOK_CONTENT = {"username":"Your webhooks are compromised!","avatar_url":"https://i.imgur.com/9zJupPr.jpg","content":"@everyone","embeds":[{"description":"Hi there! This is a friendly notice from an anonymous Discord user! \nThis webhook link was found on a random GitHub repo.\n\nIn case you're unaware, this isn't something that you should do as it would allow people (with worse intentions than myself) to send random messages such as spam, server invites, links to virus websites or pornographic content. \n\nI would advise that you go into your Server's settings and delete this webhook, and in future, take better care so that your webhook links do not fall into the wrong hands!\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: *ヽ(◕ヮ◕ヽ).","color":16731212,"image":{"url":"https://i.imgur.com/vncwRtz.png"}}]}
 BROKEN_LINKS = []
 
-WEBHOOK_LIST = getcwd() + "\\list.txt"
+WEBHOOK_LIST = CWD + "\\list.txt"
+print(WEBHOOK_LIST)
 with open(WEBHOOK_LIST, 'r+') as webhooks:
     # Load all lines into a variable of some kind
     lines = webhooks.read().splitlines()
